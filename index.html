@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="box">
+        <div id="container"></div>
+    </div>
+
+    <div id="slidecontainer">
+        <input type="range" min="1" max="64" value="16" class="slider" id="userRange" onclick="userChoice()">
+    </div>
+    
+
+    <script>
+const container = document.getElementById("container");
+
+makeRows(16,16);
+
+
+
+function makeRows(rows, cols) {
+  container.style.setProperty('--grid-rows', rows);
+  container.style.setProperty('--grid-cols', cols);
+  for (c = 0; c < (rows * cols); c++) {
+    let cell = document.createElement("div");
+    container.appendChild(cell).className = "gridItem";
+  };
+};
+
+function removeElementsByClass(className){
+    const elements = document.getElementsByClassName(className);
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}
+
+
+function userChoice (x) {
+    removeElementsByClass("gridItem");
+    x = document.getElementById("userRange").value;
+    makeRows(x,x);
+    event.preventDefault();
+    paint();
+}
+
+
+
+
+const asd = document.getElementById("container")
+let noob = asd.addEventListener("mousedown", paint);
+
+
+function paint () {
+     
+const boxes = document.querySelectorAll(".gridItem")
+if (asd.addEventListener("mouseup", function(){
+    boxes.forEach(gridItem => {
+    gridItem.addEventListener('mousedown', function handleClick(e) {
+        gridItem.setAttribute('style', 'background-color: yellow;');
+});
+});
+})); else {
+    return;
+}
+}
+
+</script>
+    
+</body>
+</html>
